@@ -132,3 +132,4 @@ C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\
 C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\APICatalogo.pdb
 C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\APICatalogo.genruntimeconfig.cache
 C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\ref\APICatalogo.dll
+C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\APICatalogo.sourcelink.json

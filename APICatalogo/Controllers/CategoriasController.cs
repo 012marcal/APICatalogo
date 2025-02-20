@@ -19,10 +19,19 @@ namespace APICatalogo.Controllers
         }
 
 
+
+        [HttpGet("produtos")]
+        public ActionResult<IEnumerable<Categoria>> GetCategoriasProdutos()
+        {
+            return _context.Categorias.Include(p => p.Produtos).AsNoTracking().ToList();  
+
+        }
+
+
         [HttpGet]
         public ActionResult<IEnumerable<Categoria>> Get() 
         { 
-            var categoria = _context.Categorias.ToList();
+            var categoria = _context.Categorias.AsNoTracking().ToList();
 
             if(categoria is null  ) 
             {
@@ -38,7 +47,7 @@ namespace APICatalogo.Controllers
         public ActionResult<Categoria> Get(int id) 
         {
 
-            var categoria = _context.Categorias.FirstOrDefault(p => p.CategoriaId == id);
+            var categoria = _context.Categorias.AsNoTracking().FirstOrDefault(p => p.CategoriaId == id);
 
             if( categoria is null )
             {
@@ -76,7 +85,7 @@ namespace APICatalogo.Controllers
 
             if(id != categoria.CategoriaId)
             {
-                NotFound("Id não encontrado...");
+                BadRequest("Id não encontrado...");
             }
 
             
