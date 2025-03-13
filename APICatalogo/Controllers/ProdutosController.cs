@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace APICatalogo.Controllers
 {
 
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ProdutosController : ControllerBase
     {
@@ -21,10 +21,10 @@ namespace APICatalogo.Controllers
 
 
         [HttpGet]
-        public ActionResult<IEnumerable<Produto>> Get()
+        public async Task< ActionResult<IEnumerable<Produto>>> Get()
         {
 
-            var produtos = _context.Produtos.AsNoTracking().ToList();
+            var produtos = await _context.Produtos.AsNoTracking().ToListAsync();
 
             if (produtos is null)
             {
@@ -36,11 +36,11 @@ namespace APICatalogo.Controllers
         }
 
 
-        [HttpGet("{id:int}", Name = "obterProduto")]
-         public ActionResult<Produto> Get(int id)
+        [HttpGet("{id:int:min(1)}", Name = "obterProduto")]
+         public async Task<ActionResult<Produto>> Get(int id)
         {
 
-            var produto = _context.Produtos.AsNoTracking().FirstOrDefault(p => p.ProdutoId == id) ;
+            var produto = await _context.Produtos.AsNoTracking().FirstOrDefaultAsync(p => p.ProdutoId == id) ;
 
             if(produto is null)
             {
@@ -54,7 +54,7 @@ namespace APICatalogo.Controllers
 
 
         [HttpPost]
-        public ActionResult Post(Produto produto)
+        public async Task< ActionResult >Post(Produto produto)
         {
 
             if (produto is null) 
@@ -62,15 +62,15 @@ namespace APICatalogo.Controllers
                 return BadRequest("Nemhum Produto informado");  
             }
 
-            _context.Produtos.Add(produto);
-            _context.SaveChanges();
+                  _context.Produtos.Add(produto);
+            await _context.SaveChangesAsync();
 
             return new CreatedAtRouteResult("obterProduto", new { id = produto.ProdutoId }, produto);
 
         }
 
-        [HttpPut("{id:int}")]
-        public ActionResult Put(int id, Produto produto) 
+        [HttpPut("{id::min(1)}")]
+        public async Task<ActionResult> Put(int id, Produto produto) 
         {
         
             if (id != produto.ProdutoId) 
@@ -80,25 +80,25 @@ namespace APICatalogo.Controllers
             }
 
             _context.Entry(produto).State = EntityState.Modified;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync(); 
 
             return Ok(produto);
         }
 
 
         [HttpDelete("{id:int}")]
-        public ActionResult Delete(int id )
+        public async Task< ActionResult >Delete(int id )
         {
 
-            var produto = _context.Produtos.FirstOrDefault(p=> p.ProdutoId == id );
+            var produto = await _context.Produtos.FirstOrDefaultAsync(p => p.ProdutoId == id);
 
             if(produto is null)
             {
                 return NotFound("Produto não localizado...");
             }
             
-            _context.Produtos.Remove(produto);
-            _context.SaveChanges(); 
+                  _context.Produtos.Remove(produto);
+            await _context.SaveChangesAsync(); 
             return Ok(produto); 
         }
     }

@@ -126,10 +126,14 @@ C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\
 C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.APICatalogo.props
 C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\scopedcss\bundle\APICatalogo.styles.css
-C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\APICatalogo.csproj.CopyComplete
 C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\APICatalogo.dll
 C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\refint\APICatalogo.dll
 C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\APICatalogo.pdb
 C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\APICatalogo.genruntimeconfig.cache
 C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\ref\APICatalogo.dll
 C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\APICatalogo.sourcelink.json
+C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\bin\Debug\net8.0\APICatalogo.staticwebassets.endpoints.json
+C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\staticwebassets\msbuild.APICatalogo.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\Dev\Documents\ProjetosProgramacao\VisualStudio\APICatalogo\APICatalogo\obj\Debug\net8.0\APICatal.C7776A93.Up2Date
