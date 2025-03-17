@@ -24,7 +24,7 @@ namespace APICatalogo.Controllers
         public async Task<ActionResult<IEnumerable<Categoria>>> GetCategoriasProdutos()
         {
 
-                return await _context.Categorias.Include(p => p.Produtos).ToListAsync();
+                return await _context.Categorias.AsNoTracking().Include(p => p.Produtos).ToListAsync();
             
 
         }

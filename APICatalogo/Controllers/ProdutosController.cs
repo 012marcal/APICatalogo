@@ -69,13 +69,13 @@ namespace APICatalogo.Controllers
 
         }
 
-        [HttpPut("{id::min(1)}")]
+        [HttpPut("{id:int:min(1)}")]
         public async Task<ActionResult> Put(int id, Produto produto) 
         {
         
             if (id != produto.ProdutoId) 
             {
-                return BadRequest("este id já existe...");
+                return BadRequest("este id não existe...");
 
             }
 
@@ -86,7 +86,7 @@ namespace APICatalogo.Controllers
         }
 
 
-        [HttpDelete("{id:int}")]
+        [HttpDelete("{id:int:min(1)}")]
         public async Task< ActionResult >Delete(int id )
         {
 
