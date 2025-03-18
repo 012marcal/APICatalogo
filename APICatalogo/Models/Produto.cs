@@ -12,7 +12,7 @@ namespace APICatalogo.Models
 
         [Key]
         public int ProdutoId { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Nome deve ser obrigatório!")]
         [StringLength(80)]
         public string Nome { get; set; }
 
@@ -22,6 +22,7 @@ namespace APICatalogo.Models
 
         [Required]
         [Column(TypeName ="decimal(10,2)")]
+        [Range(1,1000, ErrorMessage = "O valor deve ser entre 1 e 1000")]
         public decimal preco { get; set; }
         [Required]
         [StringLength(300)]

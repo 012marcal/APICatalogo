@@ -1,4 +1,5 @@
 ﻿using APICatalogo.Context;
+using APICatalogo.Filters;
 using APICatalogo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,13 +25,15 @@ namespace APICatalogo.Controllers
         public async Task<ActionResult<IEnumerable<Categoria>>> GetCategoriasProdutos()
         {
 
-                return await _context.Categorias.Include(p => p.Produtos).ToListAsync();
+                return await _context.Categorias.AsNoTracking().Include(p => p.Produtos).ToListAsync();
             
 
         }
 
 
+
         [HttpGet]
+        [ServiceFilter(typeof(ApiLoggingFilter))]
         public async Task<ActionResult<IEnumerable<Categoria>>> Get() 
         { 
             var categoria = await _context.Categorias.AsNoTracking().ToListAsync();

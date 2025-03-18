@@ -371,6 +371,7 @@
             "in": "path",
             "required": true,
             "schema": {
+              "minimum": 1,
               "type": "integer",
               "format": "int32"
             }
@@ -441,6 +442,8 @@
             "type": "string"
           },
           "preco": {
+            "maximum": 1000,
+            "minimum": 1,
             "type": "number",
             "format": "double"
           },

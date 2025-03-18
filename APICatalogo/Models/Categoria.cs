@@ -22,7 +22,7 @@ namespace APICatalogo.Models
 
 
 
-        [Required]
+        [Required(ErrorMessage = "campo obrigatório!") ]
         [StringLength(80)]
         public string Nome { get; set;}
 
