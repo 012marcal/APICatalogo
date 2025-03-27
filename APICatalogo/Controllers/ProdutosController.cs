@@ -1,7 +1,7 @@
-﻿using APICatalogo.Context;
-using APICatalogo.Models;
+﻿using APICatalogo.Models;
+using APICatalogo.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace APICatalogo.Controllers
 {
@@ -10,96 +10,89 @@ namespace APICatalogo.Controllers
     [ApiController]
     public class ProdutosController : ControllerBase
     {
-        private readonly DatabaseContext _context;
+        private readonly IProdutoRepository _repository;
+        private readonly ILogger<ProdutosController> _logger;
 
-        public ProdutosController(DatabaseContext context)
+        public ProdutosController(IProdutoRepository repository, ILogger<ProdutosController> logger)
         {
-
-            _context = context;
+            _repository = repository;
+            _logger = logger;   
 
         }
 
 
+
+
         [HttpGet]
-        public async Task< ActionResult<IEnumerable<Produto>>> Get()
+        public ActionResult<IEnumerable<Produto>> Get()
         {
 
-            var produtos = await _context.Produtos.AsNoTracking().ToListAsync();
-
-            if (produtos is null)
-            {
-                return NotFound();
-
-            }
-            return produtos;
+            var produtos = _repository.GetProdutos();
+            return Ok(produtos);
 
         }
 
 
         [HttpGet("{id:int:min(1)}", Name = "obterProduto")]
-         public async Task<ActionResult<Produto>> Get(int id)
+         public ActionResult<Produto> Get(int id)
         {
+            var produto = _repository.GetProdutoId(id);
 
-            var produto = await _context.Produtos.AsNoTracking().FirstOrDefaultAsync(p => p.ProdutoId == id) ;
 
-            if(produto is null)
+            if (produto == null)
             {
-               return NotFound("Produto não existe");
+                _logger.LogWarning($"{id} não encontrado");
+                return NotFound($"{id} não encontrado");
             }
-      
-            return produto;
-         
-
-        }
-
-
-        [HttpPost]
-        public async Task< ActionResult >Post(Produto produto)
-        {
-
-            if (produto is null) 
-            {
-                return BadRequest("Nemhum Produto informado");  
-            }
-
-                  _context.Produtos.Add(produto);
-            await _context.SaveChangesAsync();
-
-            return new CreatedAtRouteResult("obterProduto", new { id = produto.ProdutoId }, produto);
-
-        }
-
-        [HttpPut("{id:int:min(1)}")]
-        public async Task<ActionResult> Put(int id, Produto produto) 
-        {
-        
-            if (id != produto.ProdutoId) 
-            {
-                return BadRequest("este id não existe...");
-
-            }
-
-            _context.Entry(produto).State = EntityState.Modified;
-            await _context.SaveChangesAsync(); 
 
             return Ok(produto);
         }
 
 
-        [HttpDelete("{id:int:min(1)}")]
-        public async Task< ActionResult >Delete(int id )
+        [HttpPost]
+        public ActionResult Post(Produto produto)
         {
 
-            var produto = await _context.Produtos.FirstOrDefaultAsync(p => p.ProdutoId == id);
-
-            if(produto is null)
-            {
-                return NotFound("Produto não localizado...");
-            }
             
-                  _context.Produtos.Remove(produto);
-            await _context.SaveChangesAsync(); 
-            return Ok(produto); 
+
+            var produtoCriado = _repository.Create(produto);
+
+            return Ok(produtoCriado);  
+        }
+
+        [HttpPut("{id:int:min(1)}")]
+        public ActionResult Put(int id, Produto produto) 
+        {
+
+            
+            var p  = _repository.GetProdutoId(id);
+       
+            if (p is null)
+            {
+                return NotFound($"id{id} não encontrado");
+            }
+            var produtoEditado = _repository.Update(produto);
+            return Ok(produtoEditado);
+        }
+
+
+        [HttpDelete("{id:int:min(1)}")]
+        public ActionResult Delete(int id )
+        {
+
+            var produto = _repository.GetProdutoId(id);
+
+            if (produto == null)
+            {
+
+                _logger.LogWarning($"No produto id {id}");
+                return NotFound($"nao tem o produto {id}");
+
+            }
+
+            _repository.Delete(id);
+
+            return Ok(produto);
         }
     }
 }

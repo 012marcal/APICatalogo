@@ -1,6 +1,7 @@
 using APICatalogo.Context;
 using APICatalogo.Filters;
 using APICatalogo.Logging;
+using APICatalogo.Repositories;
 using Microsoft.AspNetCore.Connections;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
@@ -9,10 +10,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers().AddJsonOptions(options => options
-                                                                .JsonSerializerOptions
-                                                                    .ReferenceHandler = ReferenceHandler
-                                                                        .IgnoreCycles);
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(typeof(ApiExceptionFilter));
+}
+).AddJsonOptions(options =>
+{
+
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -26,6 +32,8 @@ builder.Services.AddDbContext<DatabaseContext>(options => options.UseMySql(mySql
 
 
 builder.Services.AddScoped<ApiLoggingFilter>();
+builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>(); 
+builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 
 builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerConfiguration
 {

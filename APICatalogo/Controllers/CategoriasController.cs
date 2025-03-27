@@ -1,6 +1,7 @@
 ﻿using APICatalogo.Context;
 using APICatalogo.Filters;
 using APICatalogo.Models;
+using APICatalogo.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,112 +12,83 @@ namespace APICatalogo.Controllers
     [Route("api/[controller]")]
     public class CategoriasController : Controller
     {
-      private readonly DatabaseContext _context;
+
+        private readonly ICategoriaRepository _repository;
+        private readonly ILogger<CategoriasController> _logger;
 
 
-        public CategoriasController(DatabaseContext contexto)
+        public CategoriasController(ICategoriaRepository repository, ILogger<CategoriasController> logger)
         {
-                _context = contexto;    
-        }
-
-
-
-        [HttpGet("produtos")]
-        public async Task<ActionResult<IEnumerable<Categoria>>> GetCategoriasProdutos()
-        {
-
-                return await _context.Categorias.AsNoTracking().Include(p => p.Produtos).ToListAsync();
-            
+            _repository = repository;
+            _logger = logger;
 
         }
-
-
 
         [HttpGet]
         [ServiceFilter(typeof(ApiLoggingFilter))]
-        public async Task<ActionResult<IEnumerable<Categoria>>> Get() 
-        { 
-            var categoria = await _context.Categorias.AsNoTracking().ToListAsync();
+        public ActionResult<IEnumerable<Categoria>> Get() 
+        {
 
-            if(categoria is null  ) 
-            {
-                
-                return NotFound();
-            }
-            return categoria;
+            var categoria = _repository.GetCategorias();
+
+            return Ok(categoria);
             
         }
 
 
-        [HttpGet("{id:int}", Name = "obterCategoria")]
-        public async Task<ActionResult<Categoria>> Get(int id) 
+        [HttpGet("{id:int}")]
+        public ActionResult Get(int id) 
         {
 
-            var categoria = await _context.Categorias.AsNoTracking().FirstOrDefaultAsync(p => p.CategoriaId == id);
 
-            if( categoria is null )
+
+            var categoria = _repository.GetCategoriaId(id);
+
+            if (categoria == null)
             {
-
-                return NotFound();
-
+                _logger.LogWarning($"{id} não encontrado");
+                return NotFound($"{id} não encontrado");
             }
-            return categoria;
 
-
+            return Ok(categoria);
         }
 
 
         [HttpPost]
-        public async Task<ActionResult>Post(Categoria categoria)
+        public ActionResult Post(Categoria categoria)
         {
+
             
-            if(categoria is null )
-            {
+            var categoriaCriada = _repository.Create(categoria);
 
-                return NotFound("Nemhum Categoria Encontrado...");  
-            }
-
-            await _context.AddAsync(categoria);
-            await _context.SaveChangesAsync();
-
-            return new CreatedAtRouteResult("obterCategoria", new {id = categoria.CategoriaId }, categoria);
+            return Ok(categoriaCriada) ;
 
 
         }
 
         [HttpPut("{id:int}")]
-        public async Task< ActionResult> Put(int id, Categoria categoria)
+        public  ActionResult Put(int id, Categoria categoria)
         {
-
-            if(id != categoria.CategoriaId)
-            {
-                BadRequest("Id não encontrado...");
-            }
-
-            
-                 _context.Entry(categoria).State = EntityState.Modified;
-           await _context.SaveChangesAsync();
+           _repository.Update(categoria);
 
             return Ok(categoria);
 
         }
 
         [HttpDelete("{id:int}")]
-        public async Task<ActionResult> Delete(int id) 
+        public  ActionResult Delete(int id) 
         {
-            
-            var categoria = await _context.Categorias.FirstOrDefaultAsync(c => c.CategoriaId == id);
-            
-            if(categoria is null ) 
+
+            var categoria = _repository.GetCategoriaId(id);
+            if (categoria == null)
             {
-                return NotFound("Id não encontrado...");
-
-
+                _logger.LogWarning($"id {id} não encontrado");
+                return NotFound($"id {id} não encontrado");
             }
 
-                  _context.Categorias.Remove(categoria);
-            await _context.SaveChangesAsync(); 
-            return Ok(categoria);   
+           _repository.Delete(id);
+
+            return Ok(categoria);
 
             
         }
