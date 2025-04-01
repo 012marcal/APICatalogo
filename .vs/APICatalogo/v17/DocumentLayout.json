@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Dev\\Documents\\ProjetosProgramacao\\VisualStudio\\APICatalogo\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{55FC0F86-95F7-430B-94EF-F914E6396DBF}|APICatalogo\\APICatalogo.csproj|c:\\users\\dev\\documents\\projetosprogramacao\\visualstudio\\apicatalogo\\apicatalogo\\controllers\\produtoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55FC0F86-95F7-430B-94EF-F914E6396DBF}|APICatalogo\\APICatalogo.csproj|solutionrelative:apicatalogo\\controllers\\produtoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55FC0F86-95F7-430B-94EF-F914E6396DBF}|APICatalogo\\APICatalogo.csproj|c:\\users\\dev\\documents\\projetosprogramacao\\visualstudio\\apicatalogo\\apicatalogo\\context\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55FC0F86-95F7-430B-94EF-F914E6396DBF}|APICatalogo\\APICatalogo.csproj|solutionrelative:apicatalogo\\context\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{55FC0F86-95F7-430B-94EF-F914E6396DBF}|APICatalogo\\APICatalogo.csproj|c:\\users\\dev\\documents\\projetosprogramacao\\visualstudio\\apicatalogo\\apicatalogo\\repositories\\categoriarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55FC0F86-95F7-430B-94EF-F914E6396DBF}|APICatalogo\\APICatalogo.csproj|solutionrelative:apicatalogo\\repositories\\categoriarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,14 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{55FC0F86-95F7-430B-94EF-F914E6396DBF}|APICatalogo\\APICatalogo.csproj|c:\\users\\dev\\documents\\projetosprogramacao\\visualstudio\\apicatalogo\\apicatalogo\\repositories\\produtorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55FC0F86-95F7-430B-94EF-F914E6396DBF}|APICatalogo\\APICatalogo.csproj|solutionrelative:apicatalogo\\repositories\\produtorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55FC0F86-95F7-430B-94EF-F914E6396DBF}|APICatalogo\\APICatalogo.csproj|c:\\users\\dev\\documents\\projetosprogramacao\\visualstudio\\apicatalogo\\apicatalogo\\controllers\\produtoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55FC0F86-95F7-430B-94EF-F914E6396DBF}|APICatalogo\\APICatalogo.csproj|solutionrelative:apicatalogo\\controllers\\produtoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55FC0F86-95F7-430B-94EF-F914E6396DBF}|APICatalogo\\APICatalogo.csproj|c:\\users\\dev\\documents\\projetosprogramacao\\visualstudio\\apicatalogo\\apicatalogo\\context\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55FC0F86-95F7-430B-94EF-F914E6396DBF}|APICatalogo\\APICatalogo.csproj|solutionrelative:apicatalogo\\context\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55FC0F86-95F7-430B-94EF-F914E6396DBF}|APICatalogo\\APICatalogo.csproj|c:\\users\\dev\\documents\\projetosprogramacao\\visualstudio\\apicatalogo\\apicatalogo\\models\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -86,7 +86,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 18,
           "Children": [
             {
               "$type": "Bookmark",
@@ -110,7 +110,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Produto.cs",
               "DocumentMoniker": "C:\\Users\\Dev\\Documents\\ProjetosProgramacao\\VisualStudio\\APICatalogo\\APICatalogo\\Models\\Produto.cs",
               "RelativeDocumentMoniker": "APICatalogo\\Models\\Produto.cs",
@@ -118,12 +118,11 @@
               "RelativeToolTip": "APICatalogo\\Models\\Produto.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T20:25:21.021Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T20:25:21.021Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "ProdutoRepository.cs",
               "DocumentMoniker": "C:\\Users\\Dev\\Documents\\ProjetosProgramacao\\VisualStudio\\APICatalogo\\APICatalogo\\Repositories\\ProdutoRepository.cs",
               "RelativeDocumentMoniker": "APICatalogo\\Repositories\\ProdutoRepository.cs",
@@ -147,7 +146,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "CategoriaRepository.cs",
               "DocumentMoniker": "C:\\Users\\Dev\\Documents\\ProjetosProgramacao\\VisualStudio\\APICatalogo\\APICatalogo\\Repositories\\CategoriaRepository.cs",
               "RelativeDocumentMoniker": "APICatalogo\\Repositories\\CategoriaRepository.cs",
@@ -155,8 +154,7 @@
               "RelativeToolTip": "APICatalogo\\Repositories\\CategoriaRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T13:25:21.11Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T13:25:21.11Z"
             },
             {
               "$type": "Document",
@@ -231,7 +229,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "CategoriasController.cs",
               "DocumentMoniker": "C:\\Users\\Dev\\Documents\\ProjetosProgramacao\\VisualStudio\\APICatalogo\\APICatalogo\\Controllers\\CategoriasController.cs",
               "RelativeDocumentMoniker": "APICatalogo\\Controllers\\CategoriasController.cs",
@@ -239,8 +237,7 @@
               "RelativeToolTip": "APICatalogo\\Controllers\\CategoriasController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-18T17:46:20.394Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-18T17:46:20.394Z"
             },
             {
               "$type": "Document",
@@ -292,19 +289,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "ProdutosController.cs",
               "DocumentMoniker": "C:\\Users\\Dev\\Documents\\ProjetosProgramacao\\VisualStudio\\APICatalogo\\APICatalogo\\Controllers\\ProdutosController.cs",
               "RelativeDocumentMoniker": "APICatalogo\\Controllers\\ProdutosController.cs",
               "ToolTip": "C:\\Users\\Dev\\Documents\\ProjetosProgramacao\\VisualStudio\\APICatalogo\\APICatalogo\\Controllers\\ProdutosController.cs",
               "RelativeToolTip": "APICatalogo\\Controllers\\ProdutosController.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAmwEwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T19:07:26.05Z"
+              "WhenOpened": "2025-02-18T19:07:26.05Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "DatabaseContext.cs",
               "DocumentMoniker": "C:\\Users\\Dev\\Documents\\ProjetosProgramacao\\VisualStudio\\APICatalogo\\APICatalogo\\Context\\DatabaseContext.cs",
               "RelativeDocumentMoniker": "APICatalogo\\Context\\DatabaseContext.cs",
