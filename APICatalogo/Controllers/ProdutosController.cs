@@ -9,13 +9,17 @@ namespace APICatalogo.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class ProdutosController : ControllerBase
+
     {
-        private readonly IProdutoRepository _repository;
+        //private readonly IRepository<Produto> _repository;
+        private readonly IProdutoRepository _produtoRepository;
         private readonly ILogger<ProdutosController> _logger;
 
-        public ProdutosController(IProdutoRepository repository, ILogger<ProdutosController> logger)
+        public ProdutosController(IProdutoRepository produtoRepository, ILogger<ProdutosController> logger)//IRepository<Produto> repository 
         {
-            _repository = repository;
+
+            //_repository = repository;    
+            _produtoRepository = produtoRepository;
             _logger = logger;   
 
         }
@@ -27,8 +31,26 @@ namespace APICatalogo.Controllers
         public ActionResult<IEnumerable<Produto>> Get()
         {
 
-            var produtos = _repository.GetProdutos();
+            var produtos = _produtoRepository.GetAll();
             return Ok(produtos);
+
+        }
+
+        [HttpGet("produtosCategoria/{id}")]
+        public ActionResult<IEnumerable<Produto>> GetProdutosCategorias(int id)
+        {
+
+
+            var produtosCategorias = _produtoRepository.GetProdutosCategoria(id);
+
+            if (produtosCategorias is null) { 
+            
+                return NotFound($"Categoria {id} não encontrada.");
+            
+            }
+            
+            return Ok(produtosCategorias);
+
 
         }
 
@@ -36,7 +58,7 @@ namespace APICatalogo.Controllers
         [HttpGet("{id:int:min(1)}", Name = "obterProduto")]
          public ActionResult<Produto> Get(int id)
         {
-            var produto = _repository.GetProdutoId(id);
+            var produto = _produtoRepository.Get(p => p.ProdutoId == id);
 
 
             if (produto == null)
@@ -55,7 +77,7 @@ namespace APICatalogo.Controllers
 
             
 
-            var produtoCriado = _repository.Create(produto);
+            var produtoCriado = _produtoRepository.Create(produto);
 
             return Ok(produtoCriado);  
         }
@@ -64,14 +86,14 @@ namespace APICatalogo.Controllers
         public ActionResult Put(int id, Produto produto) 
         {
 
-            
-            var p  = _repository.GetProdutoId(id);
+
+            var p = _produtoRepository.Get(p => p.ProdutoId ==  id);
        
             if (p is null)
             {
                 return NotFound($"id{id} não encontrado");
             }
-            var produtoEditado = _repository.Update(produto);
+            var produtoEditado = _produtoRepository.Update(produto);
             return Ok(produtoEditado);
         }
 
@@ -80,7 +102,7 @@ namespace APICatalogo.Controllers
         public ActionResult Delete(int id )
         {
 
-            var produto = _repository.GetProdutoId(id);
+            var produto = _produtoRepository.Get(p => p.ProdutoId == id);
 
             if (produto == null)
             {
@@ -90,7 +112,7 @@ namespace APICatalogo.Controllers
 
             }
 
-            _repository.Delete(id);
+            _produtoRepository.Delete(produto);
 
             return Ok(produto);
         }

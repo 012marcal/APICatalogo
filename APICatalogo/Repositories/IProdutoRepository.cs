@@ -3,14 +3,10 @@ using System.Runtime.CompilerServices;
 
 namespace APICatalogo.Repositories
 {
-    public interface IProdutoRepository
+    public interface IProdutoRepository : IRepository<Produto>
     {
 
-        IEnumerable<Produto> GetProdutos();
-        Produto GetProdutoId(int id);
-        Produto Create(Produto produto);
-        Produto Update(Produto produto);
-        Produto Delete(int id);   
+        IEnumerable<Produto> GetProdutosCategoria(int id);
 
     }
 }

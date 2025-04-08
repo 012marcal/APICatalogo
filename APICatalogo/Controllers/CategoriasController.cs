@@ -13,11 +13,11 @@ namespace APICatalogo.Controllers
     public class CategoriasController : Controller
     {
 
-        private readonly ICategoriaRepository _repository;
+        private readonly IRepository<Categoria> _repository;
         private readonly ILogger<CategoriasController> _logger;
 
 
-        public CategoriasController(ICategoriaRepository repository, ILogger<CategoriasController> logger)
+        public CategoriasController(IRepository<Categoria> repository, ILogger<CategoriasController> logger)
         {
             _repository = repository;
             _logger = logger;
@@ -29,7 +29,7 @@ namespace APICatalogo.Controllers
         public ActionResult<IEnumerable<Categoria>> Get() 
         {
 
-            var categoria = _repository.GetCategorias();
+            var categoria = _repository.GetAll();
 
             return Ok(categoria);
             
@@ -42,7 +42,7 @@ namespace APICatalogo.Controllers
 
 
 
-            var categoria = _repository.GetCategoriaId(id);
+            var categoria = _repository.Get(c => c.CategoriaId == id );
 
             if (categoria == null)
             {
@@ -79,18 +79,15 @@ namespace APICatalogo.Controllers
         public  ActionResult Delete(int id) 
         {
 
-            var categoria = _repository.GetCategoriaId(id);
+            var categoria = _repository.Get(c => c.CategoriaId == id);
             if (categoria == null)
             {
                 _logger.LogWarning($"id {id} não encontrado");
                 return NotFound($"id {id} não encontrado");
             }
-
-           _repository.Delete(id);
+           _repository.Delete(categoria);
 
             return Ok(categoria);
-
-            
         }
     }
 }
