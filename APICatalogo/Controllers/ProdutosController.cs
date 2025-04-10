@@ -37,15 +37,15 @@ namespace APICatalogo.Controllers
         }
 
         [HttpGet("produtosCategoria/{id}")]
-        public ActionResult<IEnumerable<Produto>> GetProdutosCategorias(int id)
+        public ActionResult<IEnumerable<Produto>> GetProdutosCategorias(int categoriaId)
         {
 
 
-            var produtosCategorias = _produtoRepository.GetProdutosCategoria(id);
+            var produtosCategorias = _produtoRepository.GetProdutosCategoria(categoriaId);
 
             if (produtosCategorias is null) { 
             
-                return NotFound($"Categoria {id} não encontrada.");
+                return NotFound($"Categoria {categoriaId} não encontrada.");
             
             }
             
@@ -93,8 +93,8 @@ namespace APICatalogo.Controllers
             {
                 return NotFound($"id{id} não encontrado");
             }
-            var produtoEditado = _produtoRepository.Update(produto);
-            return Ok(produtoEditado);
+           
+            return Ok(_produtoRepository.Update(produto));
         }
 
 

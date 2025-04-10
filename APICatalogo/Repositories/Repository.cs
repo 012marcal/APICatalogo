@@ -28,14 +28,14 @@ namespace APICatalogo.Repositories
         public T Create(T entity)
         {
             _context.Set<T>().Add(entity);
-            _context.SaveChanges();
+            //_context.SaveChanges();
             return entity;
 
         }
         public T Update(T entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
-            _context.SaveChanges();
+            //_context.SaveChanges();
             return entity;  
 
         }
@@ -43,7 +43,7 @@ namespace APICatalogo.Repositories
         public T Delete(T entity)
         {
             _context.Set<T>().Remove(entity);
-            _context.SaveChanges();
+            //_context.SaveChanges();
             return entity ;
         }
 
