@@ -223,14 +223,14 @@
         }
       }
     },
-    "/api/Produtos/produtosCategoria/{id}": {
+    "/api/Produtos/produtosCategoria/{categoriaId}": {
       "get": {
         "tags": [
           "Produtos"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "categoriaId",
             "in": "path",
             "required": true,
             "schema": {

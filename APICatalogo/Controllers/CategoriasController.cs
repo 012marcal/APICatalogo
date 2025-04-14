@@ -71,6 +71,10 @@ namespace APICatalogo.Controllers
         [HttpPut("{id:int}")]
         public  ActionResult Put(int id, Categoria categoria)
         {
+
+            if (id != categoria.CategoriaId)
+                return BadRequest();
+
            _uof.CategoriaRepository.Update(categoria);
             _uof.Commit();
 

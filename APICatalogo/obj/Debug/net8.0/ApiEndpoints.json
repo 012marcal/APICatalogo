@@ -127,13 +127,13 @@
   {
     "ContainingType": "APICatalogo.Controllers.ProdutosController",
     "Method": "GetProdutosCategorias",
-    "RelativePath": "api/Produtos/produtosCategoria/{id}",
+    "RelativePath": "api/Produtos/produtosCategoria/{categoriaId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "categoriaId",
         "Type": "System.Int32",
         "IsRequired": true
       }

@@ -6,7 +6,7 @@ namespace APICatalogo.Repositories
     {
         private IProdutoRepository? _produtoRepo;
         private ICategoriaRepository? _categoriaRepo;
-        public DatabaseContext _context;
+        public readonly DatabaseContext _context;
 
 
 

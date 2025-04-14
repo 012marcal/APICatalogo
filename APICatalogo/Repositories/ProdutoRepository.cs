@@ -10,9 +10,9 @@ namespace APICatalogo.Repositories
         {
         }
 
-        public IEnumerable<Produto> GetProdutosCategoria(int id)
+        public IEnumerable<Produto> GetProdutosCategoria(int categoriaId)
         {
-            return GetAll().Where(c => c.CategoriaId == id);
+            return GetAll().Where(c => c.CategoriaId == categoriaId);
         }
     }
 }
